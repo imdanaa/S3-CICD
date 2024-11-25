@@ -21,7 +21,7 @@ jobs:
 
       - name: react build
         run: |
-          cd .\s3cicdtestapp\
+          cd ./s3cicdtestapp
           npm install
           npm run build
 
