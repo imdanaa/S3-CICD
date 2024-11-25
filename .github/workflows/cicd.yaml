@@ -20,12 +20,13 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION}}
 
       - name: react build
+        working-directory: ./s3cicdtestapp
         run: |
-          cd ./s3cicdtestapp
           npm install
           npm run build
 
       - name: s3에 업로드
+        working-directory: ./s3cicdtestapp
         run: aws s3 sync build/ s3://${{ secrets.AWS_S3_BUCKET}} --acl public-read
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
